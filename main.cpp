@@ -39,25 +39,24 @@ int main(void) {
 		switch (resultado) {
 		case '1':
 		{
-			printf("Opcion 1");
-			statement = "SELECT * from CUENTA;";
-			const char *csql2 = statement.c_str();
-			char *csql3=(char*) csql2;
+//			printf("Opcion 1");
+//			statement = "SELECT * from CUENTA;";
+//			const char *csql2 = statement.c_str();
+//			char *csql3=(char*) csql2;
 //			ejecutarComando(csql3);
+//			printf("Introduce DNI del titular de la cuenta: \n");
+//			fflush(stdout);
+//			char dni[9];
+//			scanf("%s", dni);
+//			fflush(stdin);
+//			printf("%s", dni);
+//			statement = "SELECT * from CUENTA where N_IDENT like '";
+//			statement.append(dni);
+//			statement.append("';");
+//			csql2 = statement.c_str();
+//			csql3=(char*) csql2;
 //			ejecutarComando(csql3);
-			printf("Introduce DNI del titular de la cuenta: \n");
-			fflush(stdout);
-			char dni[10];
-			scanf("%s", dni);
-			fflush(stdin);
-			printf("%s", dni);
-			statement = "SELECT * from CUENTA where DNI like '";
-			statement.append(dni);
-			statement.append("';");
-			csql2 = statement.c_str();
-			csql3=(char*) csql2;
-//			ejecutarComando(csql3);
-			printf("\n");
+//			printf("\n");
 
 			}
 			break;
@@ -83,13 +82,8 @@ int main(void) {
 //			//scanf("%i",noticia);
 //			printf( "\n ");
 //			statement = "SELECT * from NOTICIA where COD_NOT =  ";
-//
-//
-//
 //			ostringstream convert;
-//
 //			convert << noticia;
-//
 //			result = convert.str();
 //			statement.append(result);
 //			statement.append(";");
@@ -97,7 +91,6 @@ int main(void) {
 //			csql2 = statement.c_str();
 //			csql3=(char*) csql2;
 //			getTableDataNoticia(csql3);
-//
 //			cout << "\n¿Es esta la noticia que quieres modificar? (s/n) ";
 //			cin >> respuesta;
 //			if (respuesta = 's') continuar = false;
@@ -119,7 +112,6 @@ int main(void) {
 //			{
 //			case '1':
 //				cout << "\nIntroduzca el nuevo titulo : ";
-//
 //				cin >> modificacion;
 //				statement = "UPDATE NOTICIA SET TITULO = '";
 //				statement.append(modificacion);
