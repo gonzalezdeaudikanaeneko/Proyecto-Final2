@@ -18,7 +18,6 @@ using namespace std;
 class Funciones {
 public:
 
-	//int callback(void *NotUsed, int argc, char **argv, char **azColName);
 	int callback(void *NotUsed, int argc, char **argv, char **azColName);
 	int ejecutarComandoBD(char * statement);
 	void ejecutarComando(char * statement);

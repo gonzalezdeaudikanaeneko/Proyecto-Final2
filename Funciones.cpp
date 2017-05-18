@@ -71,6 +71,14 @@ void mostrarCuenta(Cuenta* n) {
 	fflush(stdout);
 }
 
+int callback(void *NotUsed, int argc, char **argv, char **azColName) {
+	int i;
+	for (i = 0; i < argc; i++) {
+		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+	}
+	printf("\n");
+	return 0;
+}
 //void abrirBD() {
 //	sqlite3 *db;
 //	char *zErrMsg = 0;
@@ -157,75 +165,38 @@ void crearTabla() {
 	}
 	sqlite3_close(db);
 }
-//
-//void ejecutarComando(char * statement) {
-//	int devolver;
-//	int rc;
-//
-//	sqlite3* db;
-//	//rc = sqlite3_open("xmlbd.s3db", &db);
-//	rc = sqlite3_open("Cuentas.db", &db);
-//
-//	if (rc) {
-//		//cambiar stderr por stdout para mostrar por consola
-//		fprintf(stdout, "Error al abrir BD: %s\n", sqlite3_errmsg(db));
-//		exit(0);
-//	} else {
-//		fprintf(stdout, "Base de datos abierta exitosamente\n");
-//	}
-//
-//	char *zErrMsg = 0;
-//	const char* data = "Callback function called";
-//	rc = sqlite3_exec(db, statement, callback, (void*) data, &zErrMsg);
-//	if (rc != SQLITE_OK) {
-//		fprintf(stderr, "SQL error: %s\n", zErrMsg);
-//		fflush(stdout);
-//		sqlite3_free(zErrMsg);
-//		devolver = 1;
-//	} else {
-//		fprintf(stdout, "Operacion correcta\n");
-//		devolver = 0;
-//
-//	}
-//	sqlite3_close(db);
-//	//return devolver;
-//
-//}
-//void cerrarBD(sqlite3* db) {
-//	sqlite3_close(db);
-//}
-//int callback(void *NotUsed, int argc, char **argv, char **azColName) {
-//
-//	NotUsed = 0;
-//
-//	for (int i = 0; i < argc; i++) {
-//
-//		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-//	}
-//
-//	printf("\n");
-//
-//	return 0;
-//}
 
-int callback(void *NotUsed, int argc, char **argv, char **azColName) {
-	int i;
-	for (i = 0; i < argc; i++) {
-		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+void ejecutarComando(char * statement) {
+	int rc;
+
+	sqlite3* db;
+	//rc = sqlite3_open("xmlbd.s3db", &db);
+	rc = sqlite3_open("Cuentas.db", &db);
+
+	if (rc) {
+		//cambiar stderr por stdout para mostrar por consola
+		fprintf(stdout, "Error al abrir BD: %s\n", sqlite3_errmsg(db));
+		exit(0);
+	} else {
+		fprintf(stdout, "Base de datos abierta exitosamente\n");
 	}
-	printf("\n");
-	return 0;
+
+	char *zErrMsg = 0;
+	const char* data = "Callback function called";
+	rc = sqlite3_exec(db, statement, callback, (void*) data, &zErrMsg);
+	if (rc != SQLITE_OK) {
+		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		fflush(stdout);
+		sqlite3_free(zErrMsg);
+	} else {
+		fprintf(stdout, "Operacion correcta\n");
+
+	}
+	sqlite3_close(db);
+
 }
 
 Cuenta* get(list<Cuenta*>* _list, int _i) {
-	list<Cuenta*>::iterator it = _list->begin();
-	for (int i = 0; i < _i; i++) {
-		++it;
-	}
-	return *it;
-}
-
-Cuenta* get2(list<Cuenta*>* _list, int _i) {
 	list<Cuenta*>::iterator it = _list->begin();
 	for (int i = 0; i < _i; i++) {
 		++it;
