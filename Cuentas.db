@@ -1,0 +1,9 @@
+SQLite format 3   @     N            
+                                                 ( -æ
+  Ý Jø Ý Ý                                                                                                         ‚2„;tableCUENTACREATE TABLE [CUENTA] (
+[COD_CUENTA] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+[TITULAR] VARCHAR(200) NOT  NULL,
+[CONTRASEÑA] VARCHAR(30) NOT NULL,
+[DNI] VARCHAR(9) NOT NULL,
+[SUELDO] VARCHAR(2000) NULL
+)
