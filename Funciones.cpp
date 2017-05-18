@@ -36,6 +36,7 @@ char mostrarMenu() {
 	fflush(stdin);
 	return resultado;
 }
+
 char mostrarMenuCliente() {
 	printf("MENU PRINCIPAL\n"
 			"1.\tIngresar Dinero\n"
@@ -63,12 +64,12 @@ char mostrarMenuTrabajador() {
 	return resultado;
 }
 /**
- 	int nIdent;
-	char *nombre;
-	int ID_Cuenta;
-	float liq;
-	int numCuentas;
-	char *contrasena;
+ int nIdent;
+ char *nombre;
+ int ID_Cuenta;
+ float liq;
+ int numCuentas;
+ char *contrasena;
  **/
 //Cuenta* nuevaCuenta() {
 //
@@ -276,6 +277,4 @@ void mostrarCuenta(Cuenta* n) {
 //	}
 //	cerrarBD(db);
 //}
-
-
 
