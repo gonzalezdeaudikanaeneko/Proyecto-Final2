@@ -6,11 +6,17 @@
  */
 #include "sqlite3.h"
 #include <list>
+#include <string.h>
+#include <string>
+#include "Cuenta.h"
+#include <stdlib.h>
 
 #ifndef FUNCIONES_H_
 #define FUNCIONES_H_
+using namespace std;
 
-
+class Funciones {
+public:
 
 	//int callback(void *NotUsed, int argc, char **argv, char **azColName);
 	int callback(void *NotUsed, int argc, char **argv, char **azColName);
@@ -21,4 +27,8 @@
 	void abrirBD();
 	char mostrarMenuTrabajador();
 	char mostrarMenuCliente();
+	void almacenarEnBD(list<Cuenta> noticias);
+
+private:
+};
 #endif /* FUNCIONES_H_ */

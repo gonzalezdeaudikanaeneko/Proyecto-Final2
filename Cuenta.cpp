@@ -40,7 +40,7 @@ Cuenta::~Cuenta() {
 int Cuenta::getNumeroId(){
 	return nIdent;
 }
-float Cuenta::getLiquidacion(){
+int Cuenta::getLiquidacion(){
 	return liq;
 }
 char* Cuenta::getNombre(){
@@ -53,7 +53,7 @@ char* Cuenta::getContrasena(){
 void Cuenta::setNumeroId(int a){
 	this->nIdent=a;
 }
-void Cuenta::setLiquidacion(float a){
+void Cuenta::setLiquidacion(int a){
 	this->liq = a;
 }
 void Cuenta::setNombre(char* a){

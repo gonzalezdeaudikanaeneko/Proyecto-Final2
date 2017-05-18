@@ -24,12 +24,12 @@ public:
 	Cuenta();
 	virtual ~Cuenta();
 	int getNumeroId();
-	float getLiquidacion();
+	int getLiquidacion();
 	char* getNombre();
 	char* getContrasena();
 
 	void setNumeroId(int a);
-	void setLiquidacion(float a);
+	void setLiquidacion(int a);
 	void setNombre(char* a);
 	void setContrasena(char* a);
 
