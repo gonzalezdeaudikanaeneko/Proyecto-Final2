@@ -38,7 +38,7 @@ Banco::~Banco() {
 //	CuentasB->push_back(c);
 //	cout << "Exito\n";
 //}
-//
+
 //void Banco::buscarCuenta(list<Cuenta*>* CuentasB, int cli) {
 //
 //	int i = 0, enc = 0;
@@ -60,7 +60,7 @@ Banco::~Banco() {
 //		cout << "El cliente %i no existe\n\n" << cli;
 //	}
 //}
-//
+
 //Cuenta Banco::buscarCuenta1(list<Cuenta*>* CuentasB, int cli) {
 //
 //	int i = 0, enc = 0;
@@ -84,7 +84,7 @@ Banco::~Banco() {
 //		}
 //	}
 //}
-//
+
 //int Banco::existeCuenta(list<Cuenta*>* CuentasB, int cli) {
 //
 //	int i = 0, enc = 0;
@@ -97,7 +97,7 @@ Banco::~Banco() {
 //	}
 //	return enc;
 //}
-//
+
 //void Banco::eliminarCuenta1(list<Cuenta*>* CuentasB, int cli) { //funciona
 //	int i = 0, enc = 0;
 //	while (enc == 0 && i < CuentasB->getNumeroCuentas()) {
@@ -120,7 +120,7 @@ Banco::~Banco() {
 //		cout << "No encontrado\n";
 //
 //	}
-//
+
 //}
 //void Banco::transaccion(list<Cuenta*>* CuentasB, int cliA, int cliB, int cant) {
 //
@@ -202,8 +202,5 @@ list<Cuenta> Banco::LeerFichero() {
 		}
 		users.push_back(c);
 	}
-//	while (getline(file, linea))
-//		archivo += linea + "\n";
-	cout << archivo;
-
+	return users;
 }

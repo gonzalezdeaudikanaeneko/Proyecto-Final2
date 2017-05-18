@@ -7,6 +7,10 @@
 
 #ifndef TRABAJADOR_H_
 #define TRABAJADOR_H_
+#include "Cuenta.h"
+#include <list>
+
+using namespace std;
 
 class Trabajador {
 public:
@@ -16,7 +20,8 @@ public:
 	int Id_Trabajador;
 	Trabajador();
 	virtual ~Trabajador();
-
+	void anadirCuenta(Cuenta * CuentasB, float liq, int cli);
+	void eliminarCuenta(list<Cuenta*>* cuentasB, int cli);
 };
 
 

@@ -9,13 +9,19 @@
 #define ADMINISTRADORCUENTAS_H_
 #include "Trabajador.h"
 #include "Cuenta.h"
+#include <list>
+using namespace std;
+
 
 class AdministradorCuentas : public Trabajador
 {
+private:
+
 public:
 	AdministradorCuentas();
 	virtual ~AdministradorCuentas();
-	//void AdministradorCuentas::anadirCuenta(Cuenta * CuentasB, float liq, int cli);
+	void anadirCuenta(list<Cuenta> CuentasB, float liq, int cli);
+	void eliminarCuenta(list<Cuenta*>* cuentasB, int cli);
 };
 
 #endif /* ADMINISTRADORCUENTAS_H_ */
