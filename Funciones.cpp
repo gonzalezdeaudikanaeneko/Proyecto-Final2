@@ -63,40 +63,7 @@ char mostrarMenuTrabajador() {
 	fflush(stdin);
 	return resultado;
 }
-/**
- int nIdent;
- char *nombre;
- int ID_Cuenta;
- float liq;
- int numCuentas;
- char *contrasena;
- **/
-//Cuenta* nuevaCuenta() {
-//
-//	Cuenta* n = new Cuenta();
-//	printf("Introduce nombre del titular: \n");
-//	fflush(stdout);
-//	char* titulo;
-//	cin >> titulo;
-//	cout << endl;
-//	n->setNombre(titulo);
-//	//////titulo//////
-//	printf("Introduce el numero de identificacion: \n");
-//	fflush(stdout);
-//	int autor;
-//	cin >> autor;
-//	cout << endl;
-//	n->setNumeroId(autor);
-//	//////autor//////
-//	printf("Introduce la contraseña: \n");
-//	fflush(stdout);
-//	char* desc;
-//	cin >> desc;
-//	cout << endl;
-//	n->setContrasena(desc);
-//	//////descripcion//////
-//	return n;
-//}
+
 void mostrarCuenta(Cuenta* n) {
 	printf("Titulo de la noticia: %s\n", n->getNombre());
 	fflush(stdout);
@@ -106,56 +73,88 @@ void mostrarCuenta(Cuenta* n) {
 	fflush(stdout);
 }
 
-//void abrirBD(){
-//	sqlite3 *db;
-//	   char *zErrMsg = 0;
-//	   int rc;
-//
-//	   rc = sqlite3_open("Cuentas"
-//			   ".db", &db);
-//
-//	   if( rc ){
-//	      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-//	      //return(0);
-//	   }else{
-//	      fprintf(stderr, "Opened database successfully\n");
-//	   }
-//	   sqlite3_close(db);
-//
-//}
-//int ejecutarComandoBD(char * statement) {
-//	int devolver;
-//	int rc;
-//
-//	sqlite3* db;
-//	//rc = sqlite3_open("xmlbd.s3db", &db);
-//	rc = sqlite3_open("xmldb.s3db", &db);
-//
-//	if (rc) {
-//		//cambiar stderr por stdout para mostrar por consola
-//		fprintf(stdout, "Error al abrir BD: %s\n", sqlite3_errmsg(db));
-//		exit(0);
-//	} else {
-//		fprintf(stdout, "Base de datos abierta exitosamente\n");
-//	}
-//
-//	char *zErrMsg = 0;
-//	const char* data = "Callback function called";
-//	rc = sqlite3_exec(db, statement, callback, (void*) data, &zErrMsg);
-//	if (rc != SQLITE_OK) {
-//		fprintf(stderr, "SQL error: %s\n", zErrMsg);
-//		fflush(stdout);
-//		sqlite3_free(zErrMsg);
-//		devolver = 1;
-//	} else {
-//		fprintf(stdout, "Operacion correcta\n");
-//		devolver = 0;
-//
-//	}
-//	sqlite3_close(db);
-//	return devolver;
-//
-//}
+void abrirBD(){
+	sqlite3 *db;
+	   char *zErrMsg = 0;
+	   int rc;
+
+	   rc = sqlite3_open("Cuentas"
+			   ".db", &db);
+
+	   if( rc ){
+	      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+	      //return(0);
+	   }else{
+	      fprintf(stderr, "Opened database successfully\n");
+	   }
+	   sqlite3_close(db);
+
+}
+
+int ejecutarComandoBD(char * statement) {
+	int devolver;
+	int rc;
+
+	sqlite3* db;
+	rc = sqlite3_open("xmldb.s3db", &db);
+
+	if (rc) {
+		//cambiar stderr por stdout para mostrar por consola
+		fprintf(stdout, "Error al abrir BD: %s\n", sqlite3_errmsg(db));
+		exit(0);
+	} else {
+		fprintf(stdout, "Base de datos abierta exitosamente\n");
+	}
+
+	char *zErrMsg = 0;
+	const char* data = "Callback function called";
+	rc = sqlite3_exec(db, statement, callback, (void*) data, &zErrMsg);
+	if (rc != SQLITE_OK) {
+		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		fflush(stdout);
+		sqlite3_free(zErrMsg);
+		devolver = 1;
+	} else {
+		fprintf(stdout, "Operacion correcta\n");
+		devolver = 0;
+
+	}
+	sqlite3_close(db);
+	return devolver;
+
+}
+void crearTabla(){
+	sqlite3 *db;
+	   char *zErrMsg = 0;
+	   int  rc;
+	   char *sql;
+
+	   /* Open database */
+	   rc = sqlite3_open("xmlbd.s3db", &db);
+	   if( rc ){
+	      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+	   }else{
+	      fprintf(stdout, "Opened database successfully\n");
+	   }
+
+	   /* Create SQL statement */
+	   sql = "CREATE TABLE CUENTA("  \
+	         "N_IDENT INT PRIMARY KEY     NOT NULL," \
+	         "NOMBRE           CHAR(30)    NOT NULL," \
+	         "CONTRASEÑA        CHAR(20)     NOT NULL," \
+	         "ID_CUENTA        CHAR(25)," \
+	         "SUELDO         INT );";
+
+	   /* Execute SQL statement */
+	   rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+	   if( rc != SQLITE_OK ){
+	   fprintf(stderr, "SQL error: %s\n", zErrMsg);
+	      sqlite3_free(zErrMsg);
+	   }else{
+	      fprintf(stdout, "Table created successfully\n");
+	   }
+	   sqlite3_close(db);
+}
 //
 //void ejecutarComando(char * statement) {
 //	int devolver;
@@ -206,14 +205,15 @@ void mostrarCuenta(Cuenta* n) {
 //
 //	return 0;
 //}
-//int callback(void *NotUsed, int argc, char **argv, char **azColName){
-//   int i;
-//   for(i=0; i<argc; i++){
-//      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-//   }
-//   printf("\n");
-//   return 0;
-//}
+
+int callback(void *NotUsed, int argc, char **argv, char **azColName){
+   int i;
+   for(i=0; i<argc; i++){
+      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+   }
+   printf("\n");
+   return 0;
+}
 
 //void almacenarEnBD(string nombreRSS, list<Noticia*>* noticias) {
 //	sqlite3* db;
