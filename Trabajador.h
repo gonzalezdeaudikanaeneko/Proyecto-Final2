@@ -13,15 +13,26 @@
 using namespace std;
 
 class Trabajador {
-public:
+private:
 	char *nombre;
-	char *contrasena;
 	int edad;
 	int Id_Trabajador;
+	char* direccion;
+public:
 	Trabajador();
 	virtual ~Trabajador();
 	void anadirCuenta(Cuenta * CuentasB, float liq, int cli);
 	void eliminarCuenta(list<Cuenta*>* cuentasB, int cli);
+	void transaccion(list<Cuenta*>* CuentasB, int cliA, int cliB, int cant);
+	void concederPrestamo();
+	void setNombre(char* a);
+	void setEdad(int a);
+	void setId(int a);
+	void setdireccion(char* a);
+	char* getNombre();
+	char* getDireccion();
+	int getId();
+	int getEdad();
 };
 
 

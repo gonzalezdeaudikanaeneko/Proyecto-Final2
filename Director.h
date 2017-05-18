@@ -15,6 +15,7 @@ public:
 
 	Director();
 	virtual ~Director();
+	void concederPrestamo();
 };
 
 #endif /* DIRECTOR_H_ */

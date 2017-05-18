@@ -22,6 +22,7 @@ public:
 	virtual ~AdministradorCuentas();
 	void anadirCuenta(list<Cuenta> CuentasB, float liq, int cli);
 	void eliminarCuenta(list<Cuenta*>* cuentasB, int cli);
+	void transaccion(list<Cuenta*>* CuentasB, int cliA, int cliB, int cant);
 };
 
 #endif /* ADMINISTRADORCUENTAS_H_ */

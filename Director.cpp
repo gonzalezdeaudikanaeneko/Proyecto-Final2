@@ -16,3 +16,7 @@ Director::~Director() {
 	// TODO Auto-generated destructor stub
 }
 
+//Prestamos y creditos
+void Director::concederPrestamo(){
+
+}
