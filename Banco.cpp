@@ -16,19 +16,19 @@
 using namespace std;
 #include <string>
 #include <cstring>
-Banco::Banco(char* nom, char* dir) {
-	// TODO Auto-generated constructor stub
-	this->nombre = nom;
-	this->direccion = dir;
-}
-
-Banco::Banco() {
-	// TODO Auto-generated destructor stub
-}
-
-Banco::~Banco() {
-	// TODO Auto-generated destructor stub
-}
+//Banco::Banco(char* nom, char* dir) {
+//	// TODO Auto-generated constructor stub
+//	this->nombre = nom;
+//	this->direccion = dir;
+//}
+//
+//Banco::Banco() {
+//	// TODO Auto-generated destructor stub
+//}
+//
+//Banco::~Banco() {
+//	// TODO Auto-generated destructor stub
+//}
 
 //void Banco::anadirCuenta(list<Cuenta*>* CuentasB, float liq, int cli) {
 //
@@ -152,7 +152,7 @@ Banco::~Banco() {
 //	}
 //}
 
-list<Cuenta*>* Banco::LeerFichero() {
+list<Cuenta*>* LeerFichero() {
 	char *str;
 	char* aa;
 	const char* aaa;
@@ -165,18 +165,19 @@ list<Cuenta*>* Banco::LeerFichero() {
 		cout << "Error no se puede abrir el archivo: " << filename << endl;
 	}
 	string linea, archivo;
-	string arch;
+	char* arch;
 
 //    for(i=0; str[i]!=' ' && str[i] == '_';i++){
 //		archivo += linea + "\n";
 //    }
 	Cuenta *c;
-	list<Cuenta*>* users;
+	list<Cuenta*>* users = new list<Cuenta*>;
 	while (getline(file, linea)) {
 		a=0;
 		aaa = linea.c_str(); //de string a const char*
 		aa = const_cast<char *>(aaa);//Castea de const char* a char*
-		for (i = 0; a!=5; i++) {
+
+		for (i = 0; a!=4; i++) {
 			//si no deja pasar a char* la linea
 			do{
 			do {
@@ -185,31 +186,31 @@ list<Cuenta*>* Banco::LeerFichero() {
 			} while (aa[i] != ' ');
 
 			if (a == 0) {	//DNI
-				const char * a = arch.c_str();
-				int l = atoi(a);
+				//const char * a = arch.c_str();
+				int l = atoi(arch);
 				c->setNumeroId(l);
 			}
 			if(a == 1) {	//Nombre
-				char *a = strdup(arch.c_str());//convierte de string a char*
-				c->setNombre(a);
+				//char *a = strdup(arch.c_str());//convierte de string a char*
+				c->setNombre(arch);
 			}
 			if(a == 2){		//Contrasenya
-				char *a = strdup(arch.c_str());
-				c->setContrasena(a);
+				//char *a = strdup(arch.c_str());
+				c->setContrasena(arch);
 			}
 			if(a == 3)		//Numero de cuenta
 			{
-				const char * a = arch.c_str();
-				int l = atoi(a);
+				//const char * a = arch.c_str();
+				int l = atoi(arch);
 				c->setID(l);
 			}
 			if(a == 4){		//Liquidez
-				const char * a = arch.c_str();
-				int l = atoi(a);
+				//const char * a = arch.c_str();
+				int l = atoi(arch);
 				c->setLiquidacion(l);
 			}
 			a++;
-			}while(a<5);
+			}while(a<4);
 		}
 		users->push_front(c);
 	}

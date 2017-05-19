@@ -12,18 +12,31 @@
 
 using namespace std;
 
-class Banco {
+//class Banco {
+//
+//private:
+//
+//	char *nombre;
+//	char* direccion;
+//
+//public:
+//
+//	Banco(char* nom, char* dir);
+//	Banco();
+//	virtual ~Banco();
+//	void anadirCuenta(list<Cuenta*>* CuentasB, float liq, int cli);
+//	void transaccion(list<Cuenta*>* CuentasB, int cliA, int cliB, int cant);
+//	void eliminarCuenta1(list<Cuenta*>* CuentasB, int cli);
+//	void buscarCuenta(list<Cuenta*>* CuentasB, int cli);
+//	int existeCuenta(list<Cuenta*>* CuentasB, int cli);
+//	Cuenta buscarCuenta1(list<Cuenta*>* CuentasB, int cli);
+//	void actualizarCuenta(list<Cuenta*>* CuentasB, int cli, Cuenta c);
+//	list<Cuenta*>* LeerFichero();
 
-private:
+	//char *nombre;
+	//char* direccion;
 
-	char *nombre;
-	char* direccion;
 
-public:
-
-	Banco(char* nom, char* dir);
-	Banco();
-	virtual ~Banco();
 	void anadirCuenta(list<Cuenta*>* CuentasB, float liq, int cli);
 	void transaccion(list<Cuenta*>* CuentasB, int cliA, int cliB, int cant);
 	void eliminarCuenta1(list<Cuenta*>* CuentasB, int cli);
@@ -32,6 +45,6 @@ public:
 	Cuenta buscarCuenta1(list<Cuenta*>* CuentasB, int cli);
 	void actualizarCuenta(list<Cuenta*>* CuentasB, int cli, Cuenta c);
 	list<Cuenta*>* LeerFichero();
-};
+//};
 
 #endif /* BANCO_H_ */

@@ -7,6 +7,9 @@
 
 #ifndef CUENTA_H_
 #define CUENTA_H_
+#include <list>
+#include <iostream>
+
 
 class Cuenta {
 private:
@@ -22,6 +25,7 @@ public:
 	Cuenta(const int nIdent, const char *nombre, int ID_Cuenta,char* cont);
 	Cuenta(const Cuenta &c);
 	Cuenta();
+
 	virtual ~Cuenta();
 	int getNumeroId();
 	int getLiquidacion();

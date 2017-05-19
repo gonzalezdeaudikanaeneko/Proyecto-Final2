@@ -20,6 +20,7 @@ Cuenta::Cuenta(const int nIdent, const char *nombre,
 	this->liq = 0;
 	this->contrasena = cont;
 }
+
 Cuenta::Cuenta(const Cuenta &c) {
 	// TODO Auto-generated constructor stub
 	this->nIdent = c.nIdent;
