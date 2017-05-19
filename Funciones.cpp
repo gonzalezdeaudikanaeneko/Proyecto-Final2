@@ -19,6 +19,7 @@
 #include <iostream>
 #include <sstream>
 #include <typeinfo>
+
 using namespace std;
 FILE *doc;
 
@@ -34,6 +35,18 @@ char mostrarMenu() {
 	fflush(stdin);
 	return resultado;
 }
+char mostrarMenuTrabajador(){
+	printf("MENU PRINCIPAL\n"
+				"1.\tDirector\n"
+				"2.\tAdministrador de cuentas\n"
+				"3.\tSalir\n\n"
+				"Introduzca numero de la funcion deseada:\n");
+		fflush(stdout);
+		char resultado;
+		resultado = getchar();
+		fflush(stdin);
+		return resultado;
+}
 
 char mostrarMenuCliente() {
 	printf("MENU PRINCIPAL\n"
@@ -47,13 +60,25 @@ char mostrarMenuCliente() {
 	fflush(stdin);
 	return resultado;
 }
-char mostrarMenuTrabajador() {
+char mostrarMenuAdmin() {
 	printf("MENU PRINCIPAL\n"
 			"1.\tAñadir Cuenta\n"
 			"2.\tEliminar Cuenta\n"
 			"3.\tMovimiento de saldo\n"
 			"4.\tMostrar datos de un cuenta\n"
 			"5.\tMostrar todas las cuentas\n\n"
+			"6.\tSalir\n\n"
+			"Introduzca numero de la funcion deseada:\n");
+	fflush(stdout);
+	char resultado;
+	resultado = getchar();
+	fflush(stdin);
+	return resultado;
+}
+char mostrarMenuDirector() {
+	printf("MENU PRINCIPAL\n"
+			"1.\tConceder Prestamo\n"
+			"2.\tSalir\n\n"
 			"Introduzca numero de la funcion deseada:\n");
 	fflush(stdout);
 	char resultado;
@@ -63,11 +88,13 @@ char mostrarMenuTrabajador() {
 }
 
 void mostrarCuenta(Cuenta* n) {
-	printf("Titulo de la noticia: %s\n", n->getNombre());
+	printf("Titular de la Cuenta: %s\n", n->getNombre());
 	fflush(stdout);
-	printf("Contraseña de la cuenta: %s\n", n->getContrasena());
+	printf("Titular de la Cuenta: %s\n", n->getNombre());
 	fflush(stdout);
-	printf("Cantidad de saldo: %f\n", n->getLiquidacion());
+	printf("Numero de la cuenta: %i\n", n->getNumeroId());
+	fflush(stdout);
+	printf("Cantidad de saldo: %i\n", n->getLiquidacion());
 	fflush(stdout);
 }
 
@@ -193,7 +220,6 @@ void ejecutarComando(char * statement) {
 
 	}
 	sqlite3_close(db);
-
 }
 
 Cuenta* get(list<Cuenta*>* _list, int _i) {

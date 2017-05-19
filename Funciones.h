@@ -10,13 +10,11 @@
 #include <string>
 #include "Cuenta.h"
 #include <stdlib.h>
+#include "Banco.h"
 
 #ifndef FUNCIONES_H_
 #define FUNCIONES_H_
 using namespace std;
-
-class Funciones {
-public:
 
 	int callback(void *NotUsed, int argc, char **argv, char **azColName);
 	int ejecutarComandoBD(char * statement);
@@ -27,7 +25,7 @@ public:
 	char mostrarMenuTrabajador();
 	char mostrarMenuCliente();
 	void almacenarEnBD(list<Cuenta> noticias);
+	char mostrarMenuDirector();
+	char mostrarMenuAdmin();
 
-private:
-};
 #endif /* FUNCIONES_H_ */
