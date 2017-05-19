@@ -17,13 +17,13 @@ Director::~Director() {
 }
 
 //Prestamos y creditos
-void Director::concederPrestamo(){
-	printf("Inserta el prestamo que quieres realizar");
-	fflush(stdout);
-	char prest;
-	prest = getchar();
-	fflush(stdin);
-	int amo = (int)prest;
-	int deuda = amo + amo/10;
-	sql.append();
-}
+//void Director::concederPrestamo(){
+//	printf("Inserta el prestamo que quieres realizar");
+//	fflush(stdout);
+//	char prest;
+//	prest = getchar();
+//	fflush(stdin);
+//	int amo = (int)prest;
+//	int deuda = amo + amo/10;
+//	sql.append();
+//}

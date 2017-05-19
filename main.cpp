@@ -58,19 +58,27 @@ int main(void) {
 			case '1': {
 				menuD = mostrarMenuDirector();
 				if (menuD == '1') {
-					printf("Introduce N_IDENT de la Cuenta: \n");
-					fflush(stdout);
-					scanf("%s", nombre1);
-					fflush(stdin);
-					printf("%s", nombre1);
-
-
 
 					printf("Introduce la cantidad del prestamo: \n");
 					fflush(stdout);
 					scanf("%s", nombre2);
 					fflush(stdin);
 					printf("%s", nombre2);
+
+					printf("Introduce la CUENTA: \n");
+					fflush(stdout);
+					scanf("%s", nombre3);
+					fflush(stdin);
+					printf("%s", nombre3);
+
+//					string Result5;//string which will contain the result
+//
+//					stringstream convert5; // stringstream used for the conversion
+//
+//					convert5 << nombre2;//add the value of Number to the characters in the stream
+//
+//					Result5 = convert5.str();//cantidad del prestamo
+
 //					statement = "UPDATE * from CUENTAS where N_IDENT like '";
 //					statement.append(nombre);
 //					statement.append("';");
@@ -78,12 +86,14 @@ int main(void) {
 //					csql3 = (char*) csql2;
 //					ejecutarComando(csql3);
 
-					statement = "UPDATE CUENTA SET SUELDO = '";
-					statement.append(modificacion);
-					statement.append("' WHERE COD_NOT = ");
-					statement.append(result);
+					statement = "UPDATE CUENTA SET SUELDO = ";
+					statement.append(nombre2);
+					statement.append("+(SELECT SUELDO FROM CUENTA WHERE N_IDENT = ");
+					statement.append(nombre3);
+					statement.append(") WHERE N_IDENT = ");
+					statement.append(nombre3);
 					statement.append(";");
-					ejecutarComandoBD(&statement[0u]);
+					ejecutarComando(&statement[0u]);
 				}
 			}
 				break;
