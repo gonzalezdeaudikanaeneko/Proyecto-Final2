@@ -40,6 +40,9 @@ char* Usuario::getNombre(){
 char* Usuario::getContrasena(){
 	return direccion;
 }
+void Usuario::setDNI(char* a){
+	this->DNI = a;
+}
 void Usuario::setNombre(char* a){
 	this->nombre=a;
 }

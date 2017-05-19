@@ -13,6 +13,7 @@ class Usuario {
 
 private:
 
+	char *DNI;
 	char *nombre;
 	char* direccion;
 
@@ -23,8 +24,12 @@ public:
 	void ingresarDinero(int dinero, Cuenta *c);
 	void sacarDinero(int dinero, Cuenta *c);
 
+	char* getDNI(){
+		return DNI;
+	}
 	char* getNombre();
 	char* getContrasena();
+	void setDNI(char* a);
 	void setNombre(char* a);
 	void setContrasena(char* a);
 };
