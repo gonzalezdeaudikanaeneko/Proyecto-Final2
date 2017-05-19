@@ -53,7 +53,7 @@ int main(void) {
 	Director d;
 	Banco b;
 	list<Cuenta*>* CB;
-	CB = b.LeerFichero();
+	//CB = b.LeerFichero();
 	int modificacion, modificacion1;
 	do {
 		repetir = true;
@@ -62,16 +62,17 @@ int main(void) {
 		case '1': {
 			menuT = mostrarMenuTrabajador();
 			switch (menuT) {
-			case '1':
+			case '1':{
 				menuD = mostrarMenuDirector();
-				break;
-			case '2':
+			}break;
+			case '2':{
 				menuA = mostrarMenuAdmin();
 				switch (menuA) {
-				case 1: //Añadir cuenta
+				case 1: {//Añadir cuenta
 					almacenarCuentaBD(nuevaCuenta());
+				}
 					break;
-				case 2: //Eliminar cuenta
+				case 2:{ //Eliminar cuenta
 					printf("Introduce N_IDENT de la Cuenta: \n");
 					fflush(stdout);
 					scanf("%s", nombre);
@@ -84,6 +85,7 @@ int main(void) {
 					csql3 = (char*) csql2;
 					ejecutarComando(csql3);
 					printf("\n");
+				}
 					break;
 				case 3: //mover saldo
 					//b.transaccion(CB, 123, 123, 350);
@@ -113,12 +115,13 @@ int main(void) {
 				default:
 					break;
 				}
+			}
 				break;
-			case '3':
+			case '3':{
 				printf("Saliendo ...");
-				break;
+			}break;
 			default:
-				printf("\Opcion incorrecta!\n\n");
+				printf("Opcion incorrecta!\n\n");
 				break;
 			}
 		}
