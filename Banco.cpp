@@ -4,7 +4,7 @@
  *  Created on: 15 de may. de 2017
  *      Author: Eneko
  */
-
+#include <cstring>
 #include "Banco.h"
 #include "Cuenta.h"
 #include <stdio.h>
@@ -153,10 +153,12 @@ Banco::~Banco() {
 //}
 
 list<Cuenta*>* Banco::LeerFichero() {
+	char *str;
+	char* aa;
+	const char* aaa;
+	int i = 0, a = 0;
 	cout << "Escriba el nombre del archivo a leer: " << endl;
 	string filename;
-	char *str;
-	int i = 0, a = 0;
 	cin >> filename;
 	ifstream file(filename.c_str());
 	if (!file) {
@@ -171,13 +173,16 @@ list<Cuenta*>* Banco::LeerFichero() {
 	Cuenta *c;
 	list<Cuenta*>* users;
 	while (getline(file, linea)) {
-
-		for (i = 0; linea[i] != '_'; i++) {
+		a=0;
+		aaa = linea.c_str(); //de string a const char*
+		aa = const_cast<char *>(aaa);//Castea de const char* a char*
+		for (i = 0; a!=5; i++) {
 			//si no deja pasar a char* la linea
+			do{
 			do {
-				arch[i] = linea[i];
+				arch[i] = aa[i];
 				i++;
-			} while (linea[i] != ' ');
+			} while (aa[i] != ' ');
 
 			if (a == 0) {	//DNI
 				const char * a = arch.c_str();
@@ -202,10 +207,11 @@ list<Cuenta*>* Banco::LeerFichero() {
 				const char * a = arch.c_str();
 				int l = atoi(a);
 				c->setLiquidacion(l);
-			};
+			}
 			a++;
+			}while(a<5);
 		}
-		users->push_back(c);
+		users->push_front(c);
 	}
 	return users;
 }
