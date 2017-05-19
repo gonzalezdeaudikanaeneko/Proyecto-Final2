@@ -18,21 +18,43 @@
 #include "Trabajador.h"
 #include "Director.h"
 #include "AdministradorCuentas.h"
+#include <string.h>
+#include <string>
+#include "Funciones.h"
+#include <stdio.h>
+#include <string.h>
+#include <string>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include "Cuenta.h"
+#include <list>
+#include "sqlite3.h"
+#include <iostream>
+#include <sstream>
+#include <typeinfo>
 
 using namespace std;
 
 int main(void) {
 	char funcMenu, menuT, menuA, menuD, menuC;
 	bool repetir;
+	char nombre[20];
 	string statement;
 	string result;
 	char *csql3;
 	const char *csql2;
+
+	string Result1,Result;			//string which will contain the result
+
+	stringstream convert1,convert; // stringstream used for the conversion
 	Trabajador t;
 	Director d;
 	Banco b;
 	list<Cuenta*>* CB;
 	CB = b.LeerFichero();
+	int modificacion, modificacion1;
 	do {
 		repetir = true;
 		funcMenu = mostrarMenu();
@@ -46,39 +68,50 @@ int main(void) {
 			case '2':
 				menuA = mostrarMenuAdmin();
 				switch (menuA) {
-					case 1://Añadir cuenta
-
-						break;
-					case 2://Eliminar cuenta
-						break;
-					case 3://mover saldo
-						//b.transaccion(CB,123,123,350);
-						break;
-					case 4://MOstra 1
-						printf("Introduce N_IDENT de la Cuenta: \n");
-						fflush(stdout);
-						char nombre[20];
-						scanf("%s", nombre);
-						fflush(stdin);
-						printf("%s", nombre);
-						statement = "SELECT * from CUENTAS where N_IDENT like '";
-						statement.append(nombre);
-						statement.append("';");
-						csql2 = statement.c_str();
-						csql3=(char*) csql2;
-						ejecutarComando(csql3);
-						printf("\n");
-						break;
-					case 5://Mostrar todas
-						statement = "SELECT * from XML;";
-						csql2 = statement.c_str();
-						csql3=(char*) csql2;
-						ejecutarComando(csql3);
-						break;
-					case 6://salir
-						break;
-					default:
-						break;
+				case 1: //Añadir cuenta
+					almacenarCuentaBD(nuevaCuenta());
+					break;
+				case 2: //Eliminar cuenta
+					printf("Introduce N_IDENT de la Cuenta: \n");
+					fflush(stdout);
+					scanf("%s", nombre);
+					fflush(stdin);
+					printf("%s", nombre);
+					statement = "DELETE * from CUENTAS where N_IDENT like '";
+					statement.append(nombre);
+					statement.append("';");
+					csql2 = statement.c_str();
+					csql3 = (char*) csql2;
+					ejecutarComando(csql3);
+					printf("\n");
+					break;
+				case 3: //mover saldo
+					//b.transaccion(CB, 123, 123, 350);
+					break;
+				case 4:						//MOstra 1
+					printf("Introduce N_IDENT de la Cuenta: \n");
+					fflush(stdout);
+					scanf("%s", nombre);
+					fflush(stdin);
+					printf("%s", nombre);
+					statement = "SELECT * from CUENTAS where N_IDENT like '";
+					statement.append(nombre);
+					statement.append("';");
+					csql2 = statement.c_str();
+					csql3 = (char*) csql2;
+					ejecutarComando(csql3);
+					printf("\n");
+					break;
+				case 5:						//Mostrar todas
+					statement = "SELECT * from XML;";
+					csql2 = statement.c_str();
+					csql3 = (char*) csql2;
+					ejecutarComando(csql3);
+					break;
+				case 6:						//salir
+					break;
+				default:
+					break;
 				}
 				break;
 			case '3':
@@ -95,9 +128,53 @@ int main(void) {
 			switch (menuC) {
 			case 1:
 				//ingresar dinero;
+				//ingresarDinero(122, get(CB, 2));
+				cout << "\nIntroduzca el numero de cuenta : ";
+				cin >> modificacion;
+
+
+				convert1 << modificacion1; //add the value of Number to the characters in the stream
+
+				Result1 = convert1.str(); //set Result to the content of the stream
+
+				cout << "\nIntroduzca el importe a introducir : ";
+				cin >> modificacion;
+
+
+				convert << modificacion; //add the value of Number to the characters in the stream
+
+				Result = convert.str(); //set Result to the content of the stream
+
+				statement = "UPDATE CUENTA SET SUELDO = '";
+				statement.append(Result);
+				statement.append("' WHERE N_IDENT = ");
+				statement.append(Result1);
+				statement.append(";");
+				//ejecutarComandoBD(&statement[0u]);
 				break;
 			case 2:
 				//sacar dinero;
+				cout << "\nIntroduzca el numero de cuenta : ";
+				cin >> modificacion;
+
+				convert1 << modificacion1; //add the value of Number to the characters in the stream
+
+				Result1 = convert1.str(); //set Result to the content of the stream
+
+				cout << "\nIntroduzca el importe a sacar : ";
+				cin >> modificacion;
+
+				convert << modificacion; //add the value of Number to the characters in the stream
+
+				Result = convert.str(); //set Result to the content of the stream
+
+
+				statement = "UPDATE CUENTA SET SUELDO = '";
+				statement.append(Result);
+				statement.append("' WHERE N_IDENT = ");
+				statement.append(Result1);
+				statement.append(";");
+				//ejecutarComandoBD(&statement[0u]);
 				break;
 			default:
 				break;

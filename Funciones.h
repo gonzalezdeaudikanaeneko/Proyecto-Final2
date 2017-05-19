@@ -24,8 +24,11 @@ using namespace std;
 	void abrirBD();
 	char mostrarMenuTrabajador();
 	char mostrarMenuCliente();
-	void almacenarEnBD(list<Cuenta> noticias);
+	void almacenarEnBD(list<Cuenta*>* noticias);
 	char mostrarMenuDirector();
 	char mostrarMenuAdmin();
+	Cuenta* nuevaCuenta();
+	void crearCuenta(int cuenta, list<Cuenta*>* cu);
+	void almacenarCuentaBD(Cuenta* c);
 
 #endif /* FUNCIONES_H_ */
