@@ -152,7 +152,7 @@ Banco::~Banco() {
 //	}
 //}
 
-list<Cuenta> Banco::LeerFichero() {
+list<Cuenta*>* Banco::LeerFichero() {
 	cout << "Escriba el nombre del archivo a leer: " << endl;
 	string filename;
 	char *str;
@@ -168,8 +168,8 @@ list<Cuenta> Banco::LeerFichero() {
 //    for(i=0; str[i]!=' ' && str[i] == '_';i++){
 //		archivo += linea + "\n";
 //    }
-	Cuenta c;
-	list<Cuenta> users;
+	Cuenta *c;
+	list<Cuenta*>* users;
 	while (getline(file, linea)) {
 
 		for (i = 0; linea[i] != '_'; i++) {
@@ -181,26 +181,26 @@ list<Cuenta> Banco::LeerFichero() {
 
 			if (a == 0) {
 				char *a = strdup(arch.c_str());//convierte de string a char*
-				c.setNombre(a);
+				c->setNombre(a);
 			}
 			if(a == 1){
 				char *a = strdup(arch.c_str());
-				c.setContrasena(a);
+				c->setContrasena(a);
 			}
 			if(a == 3){
 				const char * a = arch.c_str();
 				int l = atoi(a);
-				c.setLiquidacion(l);
+				c->setLiquidacion(l);
 			}
 			if(a == 2)
 			{
 				const char * a = arch.c_str();
 				int l = atoi(a);
-				c.setNumeroId(l);
+				c->setNumeroId(l);
 			};
 			a++;
 		}
-		users.push_back(c);
+		users->push_back(c);
 	}
 	return users;
 }

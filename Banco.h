@@ -31,7 +31,7 @@ public:
 	int existeCuenta(list<Cuenta*>* CuentasB, int cli);
 	Cuenta buscarCuenta1(list<Cuenta*>* CuentasB, int cli);
 	void actualizarCuenta(list<Cuenta*>* CuentasB, int cli, Cuenta c);
-	list<Cuenta> LeerFichero();
+	list<Cuenta*>* LeerFichero();
 };
 
 #endif /* BANCO_H_ */
