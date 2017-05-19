@@ -5,34 +5,27 @@
  *      Author: Eneko
  */
 
-#include <stdio.h>
-#include <iostream>
 #include "Cuenta.h"
 #include "Banco.h"
+#include "Usuario.h"
+#include "Trabajador.h"
+#include "Director.h"
+#include "Funciones.h"
+#include "sqlite3.h"
+#include "AdministradorCuentas.h"
+
+#include <stdio.h>
+#include <iostream>
 #include <stdbool.h>
 #include <list>
 #include <sstream>
-#include "Funciones.h"
-#include "Usuario.h"
-#include "sqlite3.h"
-#include "Trabajador.h"
-#include "Director.h"
-#include "AdministradorCuentas.h"
-#include <string.h>
-#include <string>
-#include "Funciones.h"
-#include <stdio.h>
 #include <string.h>
 #include <string>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include "Cuenta.h"
 #include <list>
-#include "sqlite3.h"
-#include <iostream>
-#include <sstream>
 #include <typeinfo>
 
 using namespace std;
