@@ -49,6 +49,9 @@ char* Cuenta::getNombre(){
 char* Cuenta::getContrasena(){
 	return contrasena;
 }
+int Cuenta::getID(){
+	return ID_Cuenta;
+}
 
 void Cuenta::setNumeroId(int a){
 	this->nIdent=a;
@@ -62,4 +65,6 @@ void Cuenta::setNombre(char* a){
 void Cuenta::setContrasena(char* a){
 	this->contrasena = a;
 }
-
+void Cuenta::setID(int a){
+	this->ID_Cuenta = a;
+}

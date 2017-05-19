@@ -14,7 +14,7 @@ private:
 	int nIdent;			//Numero de persona
 	char *nombre;		//Nombre de persona
 	int ID_Cuenta;		//Numero identificativo de la cuenta
-	float liq;			//Liquided de la cuenta
+	int liq;			//Liquided de la cuenta
 	char *contrasena;	//Contraseña del usuario
 
 public:
@@ -27,12 +27,13 @@ public:
 	int getLiquidacion();
 	char* getNombre();
 	char* getContrasena();
+	int getID();
 
 	void setNumeroId(int a);
 	void setLiquidacion(int a);
 	void setNombre(char* a);
 	void setContrasena(char* a);
-
+	void setID(int a);
 };
 
 #endif /* CUENTA_H_ */

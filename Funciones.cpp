@@ -149,75 +149,9 @@ Cuenta* nuevaCuenta() {
 	return n;
 }
 
-//int ejecutarComandoBD(char * statement) {
-//	int devolver;
-//	int rc;
-//
-//	sqlite3* db;
-//	rc = sqlite3_open("xmldb.s3db", &db);
-//
-//	if (rc) {
-//		//cambiar stderr por stdout para mostrar por consola
-//		fprintf(stdout, "Error al abrir BD: %s\n", sqlite3_errmsg(db));
-//		exit(0);
-//	} else {
-//		fprintf(stdout, "Base de datos abierta exitosamente\n");
-//	}
-//
-//	char *zErrMsg = 0;
-//	const char* data = "Callback function called";
-//	rc = sqlite3_exec(db, statement, callback, (void*) data, &zErrMsg);
-//	if (rc != SQLITE_OK) {
-//		fprintf(stderr, "SQL error: %s\n", zErrMsg);
-//		fflush(stdout);
-//		sqlite3_free(zErrMsg);
-//		devolver = 1;
-//	} else {
-//		fprintf(stdout, "Operacion correcta\n");
-//		devolver = 0;
-//
-//	}
-//	sqlite3_close(db);
-//	return devolver;
-//
-//}
-
 void cerrarBD(sqlite3* db) {
 	sqlite3_close(db);
 }
-
-//void crearTabla() {
-//	sqlite3 *db;
-//	char *zErrMsg = 0;
-//	int rc;
-//	char *sql;
-//
-//	/* Open database */
-//	rc = sqlite3_open("xmlbd.s3db", &db);
-//	if (rc) {
-//		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-//	} else {
-//		fprintf(stdout, "Opened database successfully\n");
-//	}
-//
-//	/* Create SQL statement */
-//	sql = "CREATE TABLE CUENTA("
-//			"N_IDENT INT PRIMARY KEY     NOT NULL,"
-//			"NOMBRE           CHAR(30)    NOT NULL,"
-//			"CONTRASEÑA        CHAR(20)     NOT NULL,"
-//			"ID_CUENTA        CHAR(25),"
-//			"SUELDO         INT );";
-//
-//	/* Execute SQL statement */
-//	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-//	if (rc != SQLITE_OK) {
-//		fprintf(stderr, "SQL error: %s\n", zErrMsg);
-//		sqlite3_free(zErrMsg);
-//	} else {
-//		fprintf(stdout, "Table created successfully\n");
-//	}
-//	sqlite3_close(db);
-//}
 
 void ejecutarComando(char * statement) {
 	int rc;
@@ -289,11 +223,20 @@ void almacenarCuentaBD(Cuenta* c) {
 
 	Result1 = convert1.str();//set Result to the content of the stream
 
+	int Number2 = c->getID();//number to convert int a string
+	string Result2;//string which will contain the result
+
+	stringstream convert2; // stringstream used for the conversion
+
+	convert2 << Number2;//add the value of Number to the characters in the stream
+
+	Result2 = convert2.str();//set Result to the content of the stream
+
 	string sql = "";
 //	string sql2 = "INSERT INTO CUENTAS (N_IDENT,NOMBRE,CONTRA,ID_CUENTA_SUELDO)VALUES ('" + c.getNumeroId()
 //			+ "', 'Lector Rss C++/src/" + nombreRSS + ".xml');";
 	string sql2 = "INSERT INTO CUENTAS (N_IDENT,NOMBRE,CONTRA,ID_CUENTA,SUELDO)VALUES ('" + Result1 +
-			"','" + c->getNombre() + "','" + c->getContrasena()+ "','" + c->getNombre() + + "','" +Result+"');";
+			"','" + c->getNombre() + "','" + c->getContrasena()+ "','" + Result2  + "','" +Result+"');";
 
 	const char *csql2 = sql2.c_str();
 	rc = sqlite3_exec(db, csql2, callback, 0, &zErrMsg);
