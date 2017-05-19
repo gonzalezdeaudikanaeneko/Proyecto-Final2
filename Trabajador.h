@@ -24,7 +24,8 @@ public:
 	void anadirCuenta(Cuenta * CuentasB, float liq, int cli);
 	void eliminarCuenta(list<Cuenta*>* cuentasB, int cli);
 	void transaccion(list<Cuenta*>* CuentasB, int cliA, int cliB, int cant);
-	void concederPrestamo();
+	void concederPrestamo(list<Cuenta*>* cuentasB, int cli);
+	void cambioDeMoneda(list<Cuenta*>* cuentasB, int cli);
 	void setNombre(char* a);
 	void setEdad(int a);
 	void setId(int a);

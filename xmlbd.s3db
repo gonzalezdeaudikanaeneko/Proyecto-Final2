@@ -1,8 +1,0 @@
-SQLite format 3   @     N            
-                                                 ( -æ  Ý Jø Ý Ý                                                                                                         ‚2„;tableCUENTACUENTACREATE TABLE [CUENTA] (
-[N_IDENT] VARCHAR(9) PRIMARY KEY NOT NULL,
-[NOMBRE] VARCHAR(40) DEFAULT NOT NULL,
-[CONTRASEÑA] VARCHAR(30) DEFAULT NOT NULL,
-[ID_CUENTA] INT(20) DEFAULT NOT NULL,
-[SUELDO] INTEGER(7) NOT NULL
-)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
