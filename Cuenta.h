@@ -11,7 +11,7 @@
 class Cuenta {
 private:
 
-	int nIdent;			//Numero de persona
+	int nIdent;			//Numero de persona DNI
 	char *nombre;		//Nombre de persona
 	int ID_Cuenta;		//Numero identificativo de la cuenta
 	int liq;			//Liquided de la cuenta
@@ -29,7 +29,7 @@ public:
 	char* getContrasena();
 	int getID();
 
-	void setNumeroId(int a);
+	void setNumeroId(int a);	//nIdent
 	void setLiquidacion(int a);
 	void setNombre(char* a);
 	void setContrasena(char* a);

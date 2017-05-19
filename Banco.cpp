@@ -179,24 +179,29 @@ list<Cuenta*>* Banco::LeerFichero() {
 				i++;
 			} while (linea[i] != ' ');
 
-			if (a == 0) {
-				char *a = strdup(arch.c_str());//convierte de string a char*
-				c->setNombre(a);
-			}
-			if(a == 1){
-				char *a = strdup(arch.c_str());
-				c->setContrasena(a);
-			}
-			if(a == 3){
-				const char * a = arch.c_str();
-				int l = atoi(a);
-				c->setLiquidacion(l);
-			}
-			if(a == 2)
-			{
+			if (a == 0) {	//DNI
 				const char * a = arch.c_str();
 				int l = atoi(a);
 				c->setNumeroId(l);
+			}
+			if(a == 1) {	//Nombre
+				char *a = strdup(arch.c_str());//convierte de string a char*
+				c->setNombre(a);
+			}
+			if(a == 2){		//Contrasenya
+				char *a = strdup(arch.c_str());
+				c->setContrasena(a);
+			}
+			if(a == 3)		//Numero de cuenta
+			{
+				const char * a = arch.c_str();
+				int l = atoi(a);
+				c->setID(l);
+			}
+			if(a == 4){		//Liquidez
+				const char * a = arch.c_str();
+				int l = atoi(a);
+				c->setLiquidacion(l);
 			};
 			a++;
 		}
