@@ -36,7 +36,8 @@ char mostrarMenu() {
 	return resultado;
 }
 char mostrarMenuTrabajador(){
-	printf("MENU PRINCIPAL\n"
+	printf("Trabajador>\n"
+			"MENU PRINCIPAL\n"
 				"1.\tDirector\n"
 				"2.\tAdministrador de cuentas\n"
 				"3.\tSalir\n\n"
@@ -49,7 +50,8 @@ char mostrarMenuTrabajador(){
 }
 
 char mostrarMenuCliente() {
-	printf("MENU PRINCIPAL\n"
+	printf("Cliente>\n"
+			"MENU PRINCIPAL\n"
 			"1.\tIngresar Dinero\n"
 			"2.\tRetirar dinero\n"
 			"4.\tSalir\n\n"
@@ -61,7 +63,8 @@ char mostrarMenuCliente() {
 	return resultado;
 }
 char mostrarMenuAdmin() {
-	printf("MENU PRINCIPAL\n"
+	printf("Trabajador>Administrador de cuentas>\n"
+			"MENU PRINCIPAL\n"
 			"1.\tAñadir Cuenta\n"
 			"2.\tEliminar Cuenta\n"
 			"3.\tMovimiento de saldo\n"
@@ -73,10 +76,12 @@ char mostrarMenuAdmin() {
 	char resultado;
 	resultado = getchar();
 	fflush(stdin);
+	if(resultado==1 || resultado)
 	return resultado;
 }
 char mostrarMenuDirector() {
-	printf("MENU PRINCIPAL\n"
+	printf("Trabajador>Director>\n"
+			"MENU PRINCIPAL\n"
 			"1.\tConceder Prestamo\n"
 			"2.\tSalir\n\n"
 			"Introduzca numero de la funcion deseada:\n");
