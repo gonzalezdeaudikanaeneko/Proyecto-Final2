@@ -68,11 +68,11 @@ int main(void) {
 			case '2':{
 				menuA = mostrarMenuAdmin();
 				switch (menuA) {
-				case 1: {//Añadir cuenta
+				case '1': {//Añadir cuenta
 					almacenarCuentaBD(nuevaCuenta());
 				}
 					break;
-				case 2:{ //Eliminar cuenta
+				case '2':{ //Eliminar cuenta
 					printf("Introduce N_IDENT de la Cuenta: \n");
 					fflush(stdout);
 					scanf("%s", nombre);
@@ -87,10 +87,10 @@ int main(void) {
 					printf("\n");
 				}
 					break;
-				case 3: //mover saldo
+				case '3': //mover saldo
 					//b.transaccion(CB, 123, 123, 350);
 					break;
-				case 4:						//MOstra 1
+				case '4':						//MOstra 1
 					printf("Introduce N_IDENT de la Cuenta: \n");
 					fflush(stdout);
 					scanf("%s", nombre);
@@ -104,13 +104,13 @@ int main(void) {
 					ejecutarComando(csql3);
 					printf("\n");
 					break;
-				case 5:						//Mostrar todas
+				case '5':						//Mostrar todas
 					statement = "SELECT * from XML;";
 					csql2 = statement.c_str();
 					csql3 = (char*) csql2;
 					ejecutarComando(csql3);
 					break;
-				case 6:						//salir
+				case '6':						//salir
 					break;
 				default:
 					break;
@@ -129,7 +129,7 @@ int main(void) {
 		case '2': {
 			menuC = mostrarMenuCliente();
 			switch (menuC) {
-			case 1:
+			case '1':
 				//ingresar dinero;
 				//ingresarDinero(122, get(CB, 2));
 				cout << "\nIntroduzca el numero de cuenta : ";
@@ -155,7 +155,7 @@ int main(void) {
 				statement.append(";");
 				//ejecutarComandoBD(&statement[0u]);
 				break;
-			case 2:
+			case '2':
 				//sacar dinero;
 				cout << "\nIntroduzca el numero de cuenta : ";
 				cin >> modificacion;
