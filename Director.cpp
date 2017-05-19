@@ -23,9 +23,7 @@ void Director::concederPrestamo(){
 	char prest;
 	prest = getchar();
 	fflush(stdin);
-	int amo=(int)prest;
+	int amo = (int)prest;
 	int deuda = amo + amo/10;
 	sql.append();
-
-
 }

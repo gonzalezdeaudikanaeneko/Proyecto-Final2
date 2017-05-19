@@ -33,15 +33,15 @@ using namespace std;
 int main(void) {
 	char funcMenu, menuT, menuA, menuD, menuC;
 	bool repetir;
-	char nombre[20];
+	char nombre[20],nombre1[20],nombre2[20],nombre3[20],nombre4[20];
 	string statement;
 	string result;
 	char *csql3;
 	const char *csql2;
 
-	string Result1,Result;			//string which will contain the result
+	string Result1, Result;			//string which will contain the result
 
-	stringstream convert1,convert; // stringstream used for the conversion
+	stringstream convert1, convert; // stringstream used for the conversion
 	Trabajador t;
 	Director d;
 	Banco b;
@@ -55,17 +55,46 @@ int main(void) {
 		case '1': {
 			menuT = mostrarMenuTrabajador();
 			switch (menuT) {
-			case '1':{
+			case '1': {
 				menuD = mostrarMenuDirector();
-			}break;
-			case '2':{
+				if (menuD == '1') {
+					printf("Introduce N_IDENT de la Cuenta: \n");
+					fflush(stdout);
+					scanf("%s", nombre1);
+					fflush(stdin);
+					printf("%s", nombre1);
+
+
+
+					printf("Introduce la cantidad del prestamo: \n");
+					fflush(stdout);
+					scanf("%s", nombre2);
+					fflush(stdin);
+					printf("%s", nombre2);
+//					statement = "UPDATE * from CUENTAS where N_IDENT like '";
+//					statement.append(nombre);
+//					statement.append("';");
+//					csql2 = statement.c_str();
+//					csql3 = (char*) csql2;
+//					ejecutarComando(csql3);
+
+					statement = "UPDATE CUENTA SET SUELDO = '";
+					statement.append(modificacion);
+					statement.append("' WHERE COD_NOT = ");
+					statement.append(result);
+					statement.append(";");
+					ejecutarComandoBD(&statement[0u]);
+				}
+			}
+				break;
+			case '2': {
 				menuA = mostrarMenuAdmin();
 				switch (menuA) {
-				case '1': {//Añadir cuenta
+				case '1': { //Añadir cuenta
 					almacenarCuentaBD(nuevaCuenta());
 				}
 					break;
-				case '2':{ //Eliminar cuenta
+				case '2': { //Eliminar cuenta
 					printf("Introduce N_IDENT de la Cuenta: \n");
 					fflush(stdout);
 					scanf("%s", nombre);
@@ -110,9 +139,10 @@ int main(void) {
 				}
 			}
 				break;
-			case '3':{
+			case '3': {
 				printf("Saliendo ...");
-			}break;
+			}
+				break;
 			default:
 				printf("Opcion incorrecta!\n\n");
 				break;
@@ -128,14 +158,12 @@ int main(void) {
 				cout << "\nIntroduzca el numero de cuenta : ";
 				cin >> modificacion;
 
-
 				convert1 << modificacion1; //add the value of Number to the characters in the stream
 
 				Result1 = convert1.str(); //set Result to the content of the stream
 
 				cout << "\nIntroduzca el importe a introducir : ";
 				cin >> modificacion;
-
 
 				convert << modificacion; //add the value of Number to the characters in the stream
 
@@ -163,7 +191,6 @@ int main(void) {
 				convert << modificacion; //add the value of Number to the characters in the stream
 
 				Result = convert.str(); //set Result to the content of the stream
-
 
 				statement = "UPDATE CUENTA SET SUELDO = '";
 				statement.append(Result);
