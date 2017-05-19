@@ -214,5 +214,6 @@ list<Cuenta*>* LeerFichero() {
 		}
 		users->push_front(c);
 	}
+
 	return users;
 }
