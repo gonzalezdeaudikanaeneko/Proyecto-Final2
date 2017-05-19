@@ -46,7 +46,7 @@ int main(void) {
 	Director d;
 	Banco b;
 	list<Cuenta*>* CB;
-	//CB = b.LeerFichero();
+	CB = b.LeerFichero(); //TODO
 	int modificacion, modificacion1;
 	do {
 		repetir = true;
